@@ -1,0 +1,24 @@
+#alerts-wrapper
+  - flash.map { |key, value| flash[key] = [value] unless value.is_a?(Array) }
+  - if flash[:alert].present?
+    - flash[:alert].each do |alert|
+      .alert.alert-error.fade.in.animated.shake
+        button.close data-dismiss='alert'
+        strong
+          = t(:error)
+        ==<> alert
+  - if flash[:notice].present?
+    - flash[:notice].split.flatten.each do |notice|
+      .alert.alert-info.fade.in.animated.pulse
+        button.close data-dismiss='alert'
+        strong
+          = t(:info)
+        ==<> notice
+  - if flash[:success].present?
+    - flash[:success].split.flatten.each do |success|
+      .alert.alert-success.fade.in.animated.pulse
+        button.close data-dismiss='alert'
+        strong
+          = t(:success)
+        ==<> success
+  - flash.clear

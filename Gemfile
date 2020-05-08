@@ -5,13 +5,19 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 
 gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
+gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'foreman'
-gem 'pg'
+gem 'httparty'
+
+# Auth
+gem 'devise'
+gem 'pundit'
+gem 'frondit', '~> 0.0.2.2', github: 'jpmobiletanaka/frondit'
 
 #frontend
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
@@ -42,6 +48,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'webmock'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

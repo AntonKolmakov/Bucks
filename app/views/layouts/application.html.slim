@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Bucks
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = javascript_pack_tag    'application'
+  body
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        span.glyphicon.glyphicon-ruble aria-hidden="true"
+        - if user_signed_in?
+          p.navbar-text.navbar-right
+            | Signed in as #{current_user.email} |
+            = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'navbar-link'
+    .jumbotron
+      .container
+        #vue-app
+          = render 'layouts/alerts'
+          = yield
+    = render 'layouts/footer'

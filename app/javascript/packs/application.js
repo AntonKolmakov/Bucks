@@ -16,12 +16,21 @@
 // const imagePath = (name) => images(name, true)
 
 import Vue from 'vue/dist/vue.esm'
-import App from '../app.vue'
+import Vuex from 'vuex';
 
-Vue.component('app', App)
+Vue.use(Vuex)
+// Register components names
+Vue.component('dushboard', () => import('./components/dushboard/main'));
 
 document.addEventListener('DOMContentLoaded', () => {
-  new Vue({
-    el: '[data-behavior="vue"]'
+  const el = document.getElementById('vue-app');
+
+  // Check if root element exist
+  if (!el) {
+    return false;
+  }
+
+  return new Vue({
+    el: '#vue-app'
   })
 })
