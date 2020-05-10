@@ -2,6 +2,7 @@
   "name": "bucks",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@rails/webpacker": "5.1.1",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
