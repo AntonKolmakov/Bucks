@@ -16,4 +16,3 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require cable
-import "@fortawesome/fontawesome-free/js/all";

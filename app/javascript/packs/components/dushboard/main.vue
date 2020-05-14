@@ -1,24 +1,42 @@
 <template lang="pug">
-  .page-panel
-    .page-panel__spinner(v-if="importInProgress")
-      i(:class="`fa fa-spinner fa-spin fa-fw fa-4x`")
-    .page-panel__currency(v-else="this.import_object.status === 'finished'")
-      p {{ this.import_object.results }} | Rub
+.page-panel
+  .page-panel__spinner(v-if="importInProgress")
+    i(:class="`fa fa-spinner fa-spin fa-fw fa-4x`")
+  .page-panel__currency(v-else)
+    p {{ currency }} | Rub
+      button(
+        v-if="policy('UserPolicy').index",
+        data-target="#exampleModal",
+        data-toggle="modal",
+        type="button",
+        class="btn btn-warning"
+        ) {{ 'Force' }}
+
+    rate-popup(
+      :rate="currency"
+      )
 </template>
 
 <script>
 export default {
+  components: {
+    RatePopup: () => import("./popups/rate")
+  },
+
+  props: ["data"],
+
   data() {
     return {
       cable: null,
-      import_object: {
-        status: "not_started"
-      }
+      currency: null,
+      status: "in_progress"
     };
   },
 
   created() {
     this.initializeActionCable();
+    this.currency = this.data || "";
+    this.status = this.data.status;
   },
 
   beforeDestroy() {
@@ -27,7 +45,7 @@ export default {
 
   computed: {
     importInProgress() {
-      return this.import_object.status === "not_started";
+      return this.status === "in_progress";
     }
   },
 
@@ -35,8 +53,8 @@ export default {
     initializeActionCable() {
       this.cable = App.cable.subscriptions.create("SyncChannel", {
         received: ({ data, status }) => {
-          this.import_object.status = status;
-          this.import_object.results = data.USD_RUB;
+          this.currency = data;
+          this.status = status;
         }
       });
     }
@@ -49,7 +67,10 @@ export default {
   padding: 150px;
   text-align: center;
 }
-
+button {
+  padding: 5px;
+  margin: 5px;
+}
 p {
   font-size: 2em;
 }

@@ -13,7 +13,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'foreman'
 gem 'httparty'
 gem 'whenever', require: false
-gem 'sidekiq'
+gem 'sidekiq', '~> 5.1', '>= 5.1.1'
 
 # DBs
 gem 'pg'
@@ -25,8 +25,8 @@ gem 'pundit'
 gem 'frondit', '~> 0.0.2.2', github: 'jpmobiletanaka/frondit'
 
 #frontend
-gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
-gem 'bootstrap-toggle-rails', '~> 2.2', '>= 2.2.1.0'
+gem 'bootstrap-sass'
+gem 'bootstrap-toggle-rails'
 gem 'bootstrap-wysihtml5-rails'
 gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0'

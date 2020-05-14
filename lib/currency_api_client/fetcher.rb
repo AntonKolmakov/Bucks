@@ -5,6 +5,7 @@ module CurrencyApiClient
     def call
       raise(CurrencyApiClient::Error, JSON.parse(response.body)['error']) unless response.ok?
 
+      # JSON.parse(response.body)
       response
     rescue CurrencyApiClient::Error => e
       { error: e.message }

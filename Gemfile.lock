@@ -266,11 +266,11 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (2.3.0)
-    sidekiq (6.0.7)
-      connection_pool (>= 2.2.2)
-      rack (~> 2.0)
-      rack-protection (>= 2.0.0)
-      redis (>= 4.1.0)
+    sidekiq (5.2.7)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -328,8 +328,8 @@ PLATFORMS
 DEPENDENCIES
   action-cable-testing
   bootsnap (>= 1.1.0)
-  bootstrap-sass (~> 3.4, >= 3.4.1)
-  bootstrap-toggle-rails (~> 2.2, >= 2.2.1.0)
+  bootstrap-sass
+  bootstrap-toggle-rails
   bootstrap-wysihtml5-rails
   byebug
   capybara (>= 2.15)
@@ -355,7 +355,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (~> 5.0)
   selenium-webdriver
-  sidekiq
+  sidekiq (~> 5.1, >= 5.1.1)
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)

@@ -17,10 +17,15 @@
 
 import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex';
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
+Vue.use(VueAxios, axios)
 Vue.use(Vuex)
 // Register components names
 Vue.component('dushboard', () => import('./components/dushboard/main'));
+Object.defineProperty(Vue.prototype, 'policy', { get: () => window.policy });
+window.Vue = Vue;
 
 document.addEventListener('DOMContentLoaded', () => {
   const el = document.getElementById('vue-app');
