@@ -1,5 +1,9 @@
 # README
 
+rake db:seed will create two users, admin and user
+
+you need to set up the currency_api_key 8402ec4f25958c6f6b9b to master.key
+
 - The application contains two pages: / and / admin
 - The page / displays the current dollar to ruble exchange rate, known
 application.
